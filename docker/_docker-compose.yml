@@ -1,0 +1,8 @@
+services:
+  kali-rolling:
+    image: kalilinux/kali-rolling
+    container_name: kali-rolling
+    restart: always
+    ports:
+      - 11194:1194 # OpenVPN
+    user: kali
