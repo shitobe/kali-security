@@ -1,20 +1,19 @@
 FROM kalilinux/kali-rolling
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get autoremove -y &&  \
-    apt-get install sudo  \
+    apt-get install  \
+    sudo  \
+    ssh \
+    openssh-client \
     vim \
-    openvpn \
     nmap \
     curl \
+    gobuster \
     dirb \
+    wget \
+    hydra \
+    john \
+    enum4linux \
     -y
 
-RUN useradd -m -s /bin/bash kali \
-    && echo "kali:kali" | chpasswd \
-    && usermod -aG sudo kali
-
-COPY --chown=kali:kali ./vpn /home/kali/vpn
-
-WORKDIR /home/kali/
-
-USER kali
+COPY --chown=root:root wordlists /root/wordlists
